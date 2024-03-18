@@ -18,7 +18,7 @@ document.addEventListener('keydown', function(event) {
             event.preventDefault();
             console.log(` User is not logged in. Please click 'l' to login`);
         }
-        if( event.key == 'l'){
+        if( event.key === 'l'){
             userAuth.login();
         }
         

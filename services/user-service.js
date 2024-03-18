@@ -1,3 +1,5 @@
+import { getItemFromLocalStorage, setItemInLocalStorage } from "../utils/local-storage-utils.js";
+import { LOCAL_STORAGE_KEYS } from "../constants/common-constants.js";
 /**
  * Fetch the user data from JSON
  */
@@ -9,6 +11,6 @@ const usersData = await fetch('./resources/users.json')
 .catch(error => console.error('Error reading JSON file:', error));
 
 export const getUserData = () => {
-    localStorage.setItem('registeredUsers', JSON.stringify(usersData));
-    return JSON.parse(localStorage.getItem('registeredUsers'));
+    setItemInLocalStorage(LOCAL_STORAGE_KEYS.REGISTERED_USERS, JSON.stringify(usersData));
+    return JSON.parse(getItemFromLocalStorage(LOCAL_STORAGE_KEYS.REGISTERED_USERS));
 }

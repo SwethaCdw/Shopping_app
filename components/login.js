@@ -2,11 +2,12 @@ import { PRODUCT_UPDATE_TIME } from "../constants/common-constants.js";
 import { getUpdatedProductData } from "../services/product-service.js";
 import { getUserData } from "../services/user-service.js";
 import { getInputFromUser } from "../utils/common-utils.js";
+import { getItemFromLocalStorage, removeItemFromLocalStorage, setItemInLocalStorage } from '../utils/local-storage-utils.js';
+import { LOCAL_STORAGE_KEYS } from '../constants/common-constants.js'
 
 export const userAuth = (() => {
-    let isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-    let username = localStorage.getItem('username');
-
+    let isLoggedIn = getItemFromLocalStorage(LOCAL_STORAGE_KEYS.IS_LOGGED_IN) === 'true';
+    let username = getItemFromLocalStorage(LOCAL_STORAGE_KEYS.USERNAME);
     const userData = getUserData();
 
     const isValidUser = (username, password) => {
@@ -20,8 +21,8 @@ export const userAuth = (() => {
 
         if (isValidUser(username, password)) {
             isLoggedIn = true;
-            localStorage.setItem('isLoggedIn', 'true');
-            localStorage.setItem('username', username);
+            setItemInLocalStorage(LOCAL_STORAGE_KEYS.IS_LOGGED_IN, 'true');
+            setItemInLocalStorage(LOCAL_STORAGE_KEYS.USERNAME, username);
             console.log('Login successful');
             //Update the product data after the Product update time = 30 seconds
             setTimeout(getUpdatedProductData, PRODUCT_UPDATE_TIME);
@@ -32,8 +33,8 @@ export const userAuth = (() => {
 
     const logout = () => {
         isLoggedIn = false;
-        localStorage.removeItem('isLoggedIn');
-        localStorage.removeItem('username');
+        removeItemFromLocalStorage(LOCAL_STORAGE_KEYS.IS_LOGGED_IN);
+        removeItemFromLocalStorage(LOCAL_STORAGE_KEYS.USERNAME);
         console.log('Logout successful');
     };
 

@@ -1,19 +1,39 @@
-import { userAuth } from "../components/login.js";
 
-
-export const getUserDetails = (userDetail) => {
-    let username = userAuth.getLoggedInUsername();
-    const userDetails = JSON.parse(localStorage.getItem(`${username}-details`));
-    return userDetails ? userDetails[userDetail] : null;
+/**
+ * Set item in local storage
+ * @param {*} key 
+ * @param {*} value 
+ */
+export const setItemInLocalStorage = (key, value) => {
+    try{
+        localStorage.setItem(key, value);
+    } catch(error){
+        console.log(error.message);
+    }
 }
 
-export const updateUserDetails = (data, objectName) => {
-    let username = userAuth.getLoggedInUsername();
-    const userDataString = localStorage.getItem(`${username}-details`);
-    let userData = userDataString ? JSON.parse(userDataString) : {};
-    userData = {
-        ...userData,
-        [objectName]: data
-    };
-    localStorage.setItem(`${username}-details`, JSON.stringify(userData));
+/**
+ * Get Item from Local Storage
+ * @param {*} key 
+ * @returns item value
+ */
+export const getItemFromLocalStorage = (key) => {
+    try{
+        return localStorage.getItem(key);
+    } catch(error){
+        console.log(error.message);
+        return {};
+    }
+}
+
+/**
+ * Remove item from local storage
+ * @param {*} key 
+ */
+export const removeItemFromLocalStorage = (key) => {
+    try{
+        localStorage.removeItem(key);
+    } catch(error){
+        console.log(error.message);
+    }
 }

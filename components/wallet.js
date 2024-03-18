@@ -1,7 +1,7 @@
 import { WALLET_LIMIT, WALLET, WALLET_MIN_PRICE } from "../constants/wallet-constants.js";
 import { getInputFromUser } from '../utils/common-utils.js';
-import { FLOAT_TYPE} from '../constants/common-constants.js';
-import { getUserDetails, updateUserDetails } from "../utils/local-storage-utils.js";
+import { FLOAT_TYPE } from '../constants/common-constants.js';
+import { getUserDetails, updateUserDetails } from "../utils/user-utils.js";
 
 
 

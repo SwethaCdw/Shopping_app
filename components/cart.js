@@ -2,7 +2,7 @@ import { productData } from '../services/product-service.js';
 import { findDuplicateAndUpdate, notifyUserOnProductModification } from '../utils/common-utils.js';
 import { ADD_ITEM, DELETE_ITEM } from '../constants/common-constants.js'
 import { CART } from '../constants/shop-constants.js';
-import { getUserDetails, updateUserDetails } from '../utils/local-storage-utils.js';
+import { getUserDetails, updateUserDetails } from '../utils/user-utils.js';
 
 /**
  * Add product item to cart
@@ -24,7 +24,6 @@ export const addToCart = (productIdInput) => {
         if (!duplicate) {
             cart.push({ ...product, quantity: 1, totalPrice: product.price });
         }
-        // updateUserCartDetails(cart);
         updateUserDetails(cart, CART);
 
         const totalCartPrice = calculateCartPrice();
@@ -116,7 +115,6 @@ export const updateCartOnMarketChange = () => {
             const { price, isOutOfStock } = product;
             const totalPrice = price * quantity;
             const isPriceUpdated = item.price !== price;
-            console.log(isPriceUpdated, isOutOfStock, price);
             if(isOutOfStock || isPriceUpdated){
                 notifyUserOnProductModification(item.title);
             }
@@ -124,5 +122,5 @@ export const updateCartOnMarketChange = () => {
         }
         return item;
     });
-    updateUserDetails(updatedCart, CART);
+    updateUserDetails(updatedCart, CART); 
 }

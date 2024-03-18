@@ -12,3 +12,9 @@ export const MAX_PRICE_UPDATE = 500;
 
 export const PRODUCTS_TO_UPDATE = [2, 3];
 export const PRODUCT_UPDATE_TIME = 30000;
+
+export const LOCAL_STORAGE_KEYS = {
+    IS_LOGGED_IN : 'isLoggedIn',
+    USERNAME : 'username',
+    REGISTERED_USERS : 'registeredUsers'
+}

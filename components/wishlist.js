@@ -3,7 +3,7 @@ import { clearCart, deleteProductFromCart, getCartDetails } from "./cart.js";
 import { findDuplicateAndUpdate, getInputFromUser } from '../utils/common-utils.js';
 import { SHOP, CART, WISHLIST } from '../constants/shop-constants.js';
 import { ADD_ITEM, INT_TYPE } from '../constants/common-constants.js';
-import { getUserDetails, updateUserDetails } from "../utils/local-storage-utils.js";
+import { getUserDetails, updateUserDetails } from "../utils/user-utils.js";
 
 /**
  * Move to wishlist
@@ -16,7 +16,7 @@ export const moveToWishlist = (selectedOption) => {
         const { cart } = getCartDetails();
         switch(selectedOption){
             case 1:
-                moveSpecificProductToWishlist(productData, SHOP);
+                wishlist = moveSpecificProductToWishlist(productData, SHOP);
                 break;
             case 2:
                 cart?.forEach((cartItem) => {
@@ -29,7 +29,7 @@ export const moveToWishlist = (selectedOption) => {
                 clearCart();
                 break;
             case 3:
-                moveSpecificProductToWishlist(cart, CART);
+                wishlist = moveSpecificProductToWishlist(cart, CART);
                 break;
         }
         return wishlist;
@@ -67,6 +67,8 @@ const moveSpecificProductToWishlist = (sourceArray, sourceName) => {
         if (sourceName === CART) {
             deleteProductFromCart(productId);
         }
+
+        return wishlist;
     } catch (error) {
         console.log('An error occurred while moving product to wishlist:', error.message);
     }
