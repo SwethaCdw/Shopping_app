@@ -6,7 +6,7 @@ export const CONFIRMATION = 'yes';
 export const INT_TYPE = 'INT';
 export const FLOAT_TYPE = 'FLOAT';
 
-export const DISABLED_KEYS = ['s', 'f', 'a', 'd', 'x', 'q', 'm','w','z', 'c', 'r', 'b', 'o'];
+export const DISABLED_KEYS = ['s', 'f', 'a', 'd', 'x', 'q', 'm','w','z', 'c', 'r', 'b', 'o', 'u'];
 
 export const MAX_PRICE_UPDATE = 500;
 

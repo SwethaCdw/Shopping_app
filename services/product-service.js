@@ -1,5 +1,5 @@
 import { updateCartOnMarketChange } from "../components/cart.js";
-import { userAuth } from "../components/login.js";
+import { userAuth } from "../components/user-authentication.js";
 import { MAX_PRICE_UPDATE, PRODUCTS_TO_UPDATE, PRODUCT_UPDATE_TIME } from "../constants/common-constants.js";
 import { getRandomBoolean, getRandomNumber } from "../utils/math-utils.js";
 

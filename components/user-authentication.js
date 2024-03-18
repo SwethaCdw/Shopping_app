@@ -6,10 +6,16 @@ import { getItemFromLocalStorage, removeItemFromLocalStorage, setItemInLocalStor
 import { LOCAL_STORAGE_KEYS } from '../constants/common-constants.js'
 
 export const userAuth = (() => {
-    let isLoggedIn = getItemFromLocalStorage(LOCAL_STORAGE_KEYS.IS_LOGGED_IN) === 'true';
-    let username = getItemFromLocalStorage(LOCAL_STORAGE_KEYS.USERNAME);
+    let isLoggedIn;
+    let username;
     const userData = getUserData();
 
+    const initializeUserAuth = () =>{
+        isLoggedIn = getItemFromLocalStorage(LOCAL_STORAGE_KEYS.IS_LOGGED_IN) === 'true';
+        username = getItemFromLocalStorage(LOCAL_STORAGE_KEYS.USERNAME)
+    }
+    
+   
     const isValidUser = (username, password) => {
         const user = userData.find(user => user.username === username && user.password === password);
         return !!user;
@@ -59,6 +65,7 @@ export const userAuth = (() => {
         logout,
         isLoggedInUser,
         getLoggedInUsername,
-        displayUserInfo
+        displayUserInfo,
+        initializeUserAuth
     };
 })();

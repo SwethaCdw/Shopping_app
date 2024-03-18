@@ -1,4 +1,4 @@
-import { userAuth } from "../components/login.js";
+import { userAuth } from "../components/user-authentication.js";
 import { getItemFromLocalStorage, setItemInLocalStorage } from "./local-storage-utils.js";
 
 /**

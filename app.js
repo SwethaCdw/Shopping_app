@@ -7,10 +7,10 @@ import { getWishlistItems, moveToWishlist , clearWishlist} from './components/wi
 import { multipleChoicePrompt, getInputFromUser } from './utils/common-utils.js';
 import { FILTER_CHOICES } from './constants/shop-constants.js';
 import { DISABLED_KEYS, INT_TYPE } from './constants/common-constants.js';
-import { userAuth } from './components/login.js';
-
+import { userAuth } from './components/user-authentication.js';
 
 document.addEventListener('keydown', function(event) {
+    userAuth.initializeUserAuth();
     const isUserLoggedIn = userAuth.isLoggedInUser();
     
     if (!isUserLoggedIn) {
