@@ -58,7 +58,7 @@ document.addEventListener('keydown', function(event) {
                 const {cart, cartPrice} = getCartDetails();
                 if(cart && cart.length){
                     console.log('Cart -->', cart);
-                    console.log(`Total cart price ${cartPrice}`)
+                    console.log(`Total cart price ${cartPrice.toFixed(2)}`)
                 } else {
                     console.log('Cart is Empty! Click A to add items to cart')
                 }
@@ -106,10 +106,13 @@ document.addEventListener('keydown', function(event) {
                 break;
             case 'b' :
                 const walletBalance = checkWalletBalance();
-                console.log(`WALLET BALANCE : ${walletBalance}`);
+                console.log(`WALLET BALANCE : ${walletBalance.toFixed(2)}`);
                 break;
             case 'o':
                 userAuth.logout();
+                break;
+            case 'u':
+                userAuth.displayUserInfo();
                 break;
         }
     }

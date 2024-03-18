@@ -27,7 +27,7 @@ export const checkout = () => {
         }
 
         if (cartPrice > walletAmount) {
-            alert(`You do not have enough money in the wallet. Current Amount: ${walletAmount} - Click 'R' to recharge wallet. You require ${cartPrice - walletAmount} more!`);
+            alert(`You do not have enough money in the wallet. Current Amount: ${walletAmount.toFixed(2)} - Click 'R' to recharge wallet. You require ${cartPrice - walletAmount} more!`);
             return;
         }
     
@@ -37,9 +37,10 @@ export const checkout = () => {
             return;
         }
     
-        clearCart();
         updateWalletOnCheckout(walletAmount, cartPrice);
         console.log('Checkout completed');
+        console.log('Order Details', cart );
+        clearCart();
     } catch (error) {
         console.log(error.message);
     }
